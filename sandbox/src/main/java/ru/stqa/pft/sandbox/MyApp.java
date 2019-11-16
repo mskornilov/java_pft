@@ -10,7 +10,7 @@ public class MyApp {
 		System.out.println("Площадь квадрата со стороной " + square.getL() + " = " + square.area());
 
 		Rectangle rectangle = new Rectangle(4, 6);
-		System.out.println("Площидь прямоугольника со сторонами " + rectangle.getA() + " и " + rectangle.getB() + " = " +
+		System.out.println("Площадь прямоугольника со сторонами " + rectangle.getA() + " и " + rectangle.getB() + " = " +
 											rectangle.area());
 	}
 
