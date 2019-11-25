@@ -13,14 +13,14 @@ public class HelperBase {
         this.wd = wd;
     }
 
-    protected void click(String locator) {
-        wd.findElement(By.name(locator)).click();
+    protected void click(By locator) {
+        wd.findElement(locator).click();
     }
 
-    protected void type(String locator, String text) {
+    protected void type(By locator, String text) {
         click(locator);
-        wd.findElement(By.name(locator)).clear();
-        wd.findElement(By.name(locator)).sendKeys(text);
+        wd.findElement(locator).clear();
+        wd.findElement(locator).sendKeys(text);
     }
 
     protected boolean isElementPresent(By by) {

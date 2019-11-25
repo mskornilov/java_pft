@@ -15,24 +15,24 @@ public class GroupHelper extends HelperBase {
     }
 
     public void submitGroupCreation() {
-        click("submit");
+        click(By.name("submit"));
     }
 
     public void fillGroupForm(GroupData groupData) {
-        type("group_name", groupData.getName());
-        type("group_header", groupData.getHeader());
-        type("group_footer", groupData.getFooter());
+        type(By.name("group_name"), groupData.getName());
+        type(By.name("group_header"), groupData.getHeader());
+        type(By.name("group_footer"), groupData.getFooter());
     }
 
     public void initGroupCreation() {
-        click("new");
+        click(By.name("new"));
     }
 
     public void deleteSelectedGroups() {
-        click("delete");
+        click(By.name("delete"));
     }
 
     public void selectGroup() {
-        click("selected[]");
+        click(By.name("selected[]"));
     }
 }
