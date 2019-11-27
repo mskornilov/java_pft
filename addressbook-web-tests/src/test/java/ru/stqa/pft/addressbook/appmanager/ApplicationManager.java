@@ -21,11 +21,11 @@ public class ApplicationManager {
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
         contactHelper = new ContactHelper(wd);
-        gotoHomePage("http://localhost/addressbook/");
+        gotoUrl("http://localhost/addressbook/");
         sessionHelper.login("admin", "secret");
     }
 
-    private void gotoHomePage(String homePageUrl) {
+    private void gotoUrl(String homePageUrl) {
         wd.get(homePageUrl);
     }
 
