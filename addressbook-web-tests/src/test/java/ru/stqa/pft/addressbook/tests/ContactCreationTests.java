@@ -12,10 +12,11 @@ public class ContactCreationTests extends TestBase {
             "Holmes",
             "Baker street, 221b",
             "+10 555 423 84 88",
-            "Sherlock.Holmes@lndn.uk"
+            "Sherlock.Holmes@lndn.uk",
+            "test1"
     );
     app.getContactHelper().initContactCreation();
-    app.getContactHelper().fillNewContactForm(contactData);
+    app.getContactHelper().fillNewContactForm(contactData, true);
     app.getContactHelper().submitContactCreation();
     app.getContactHelper().returnToHomePage();
   }
