@@ -15,6 +15,9 @@ public class ContactModificationTests extends TestBase {
                 "dr.watson@lndn.uk",
                 null
         );
+        if (! app.getContactHelper().isThereAContact()) {
+            app.getContactHelper().createContact();
+        }
         app.getContactHelper().initContactModification();
         app.getContactHelper().fillNewContactForm(contactData, false);
         app.getContactHelper().submitContactModification();
