@@ -13,6 +13,14 @@ public class GroupData {
         this.header = header;
         this.footer = footer;
     }
+    
+    public GroupData(int id, String name, String header, String footer) {
+        this.id = id;
+        this.name = name;
+        this.header = header;
+        this.footer = footer;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -32,12 +40,6 @@ public class GroupData {
         return result;
     }
 
-    public GroupData(int id, String name, String header, String footer) {
-        this.id = id;
-        this.name = name;
-        this.header = header;
-        this.footer = footer;
-    }
 
     @Override
     public String toString() {
