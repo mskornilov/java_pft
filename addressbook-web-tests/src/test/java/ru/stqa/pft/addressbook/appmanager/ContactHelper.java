@@ -112,15 +112,13 @@ public class ContactHelper extends HelperBase {
             int id = Integer.parseInt(element.findElement(By.cssSelector(":nth-child(1)>input")).getAttribute("value"));
             String lastname = element.findElement(By.cssSelector(":nth-child(2)")).getText();
             String firstname = element.findElement(By.cssSelector(":nth-child(3)")).getText();
-            String[] phones = element.findElement(By.cssSelector(":nth-child(6)")).getText().split("\n");
+            String allPhones = element.findElement(By.cssSelector(":nth-child(6)")).getText();
             contacts.add(
                     new ContactData()
                             .withId(id)
                             .withFirstname(firstname)
                             .withLastname(lastname)
-                            .withHomePhone(phones[0])
-                            .withMobilePhone(phones[1])
-                            .withWorkPhone(phones[2])
+                            .withAllPhones(allPhones)
             );
         }
         return contacts;
