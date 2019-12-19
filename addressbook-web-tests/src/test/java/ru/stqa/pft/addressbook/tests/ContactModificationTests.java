@@ -27,7 +27,7 @@ public class ContactModificationTests extends TestBase {
                 .withFirstname("John")
                 .withLastname("Watson")
                 .withAddress("Baker street, 221b")
-                .withPhoneNumber("+10 555 423 84 89")
+                .withHomePhone("+10 555 423 84 89")
                 .withEmail("dr.watson@lndn.uk");
         app.contact().modify(contactData);
         Contacts after = app.contact().all();
