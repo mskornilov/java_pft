@@ -16,8 +16,8 @@ public class ContactHelper extends HelperBase {
             .withFirstname("Sherlock")
             .withLastname("Holmes")
             .withAddress("Baker street, 221b")
-            .withHomePhone("+10 555 423 84 88")
-            .withEmail("Sherlock.Holmes@lndn.uk")
+            .withHomePhone("+7 555 423 84 88")
+            .withFirstEmail("Sherlock.Holmes@lndn.uk")
             .withGroup("test1");
 
     public ContactHelper(WebDriver wd) {
@@ -48,7 +48,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("lastname"), contactData.getLastname());
         type(By.name("address"), contactData.getAddress());
         type(By.name("home"), contactData.getHomePhone());
-        type(By.name("email"), contactData.getEmail());
+        type(By.name("email"), contactData.getFirstEmail());
         if (creation) {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
         } else {
@@ -79,6 +79,11 @@ public class ContactHelper extends HelperBase {
     public ContactData getContactData() {
         return contactData;
     }
+
+    private String getValueOfElement(By locator) {
+        return wd.findElement(locator).getAttribute("value");
+    }
+
 
     public void createContact() {
         initContactCreation();
@@ -112,13 +117,17 @@ public class ContactHelper extends HelperBase {
             int id = Integer.parseInt(element.findElement(By.cssSelector(":nth-child(1)>input")).getAttribute("value"));
             String lastname = element.findElement(By.cssSelector(":nth-child(2)")).getText();
             String firstname = element.findElement(By.cssSelector(":nth-child(3)")).getText();
+            String address = element.findElement(By.cssSelector(":nth-child(4)")).getText();
+            String allEmails = element.findElement(By.cssSelector(":nth-child(5)")).getText();
             String allPhones = element.findElement(By.cssSelector(":nth-child(6)")).getText();
             contacts.add(
                     new ContactData()
                             .withId(id)
                             .withFirstname(firstname)
                             .withLastname(lastname)
+                            .withAddress(address)
                             .withAllPhones(allPhones)
+                            .withAllEmails(allEmails)
             );
         }
         return contacts;
@@ -126,18 +135,32 @@ public class ContactHelper extends HelperBase {
 
     public ContactData infoFromEditForm(ContactData contact) {
         initContactModification(contact.getId());
-        String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
-        String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
-        String home = wd.findElement(By.name("home")).getAttribute("value");
-        String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
-        String work = wd.findElement(By.name("work")).getAttribute("value");
+        String firstname = getValueOfElement(By.name("firstname"));
+        String lastname = getValueOfElement(By.name("lastname"));
+        String home = getValueOfElement(By.name("home"));
+        String mobile = getValueOfElement(By.name("mobile"));
+        String work = getValueOfElement(By.name("work"));
+        String address = getAddress(By.name("address"));
+        String firstEmail = getValueOfElement(By.name("email"));
+        String secondEmail = getValueOfElement(By.name("email2"));
+        String thirdEmail = getValueOfElement(By.name("email3"));
         wd.navigate().back();
         return new ContactData()
                 .withId(contact.getId())
                 .withFirstname(firstname)
                 .withLastname(lastname)
+                .withAddress(address)
                 .withHomePhone(home)
                 .withMobilePhone(mobile)
-                .withWorkPhone(work);
+                .withWorkPhone(work)
+                .withFirstEmail(firstEmail)
+                .withSecondEmail(secondEmail)
+                .withThirdEmail(thirdEmail);
+    }
+
+    private String getAddress(By locator) {
+        String address = wd.findElement(locator).getAttribute("value");
+        address = address.replaceAll("\\s+(?=\n)|\n$", "");
+        return address;
     }
 }
