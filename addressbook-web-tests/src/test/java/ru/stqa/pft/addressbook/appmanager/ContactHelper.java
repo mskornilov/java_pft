@@ -8,9 +8,12 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
+import java.io.File;
 import java.util.List;
 
 public class ContactHelper extends HelperBase {
+
+    private File photo = new File("src/test/resources/Holmes.jpg");
 
     ContactData contactData = new ContactData()
             .withFirstname("Sherlock")
@@ -18,7 +21,8 @@ public class ContactHelper extends HelperBase {
             .withAddress("Baker street, 221b")
             .withHomePhone("+7 555 423 84 88")
             .withFirstEmail("Sherlock.Holmes@lndn.uk")
-            .withGroup("test1");
+            .withGroup("test1")
+            .withPhoto(photo);
 
     public ContactHelper(WebDriver wd) {
         super(wd);
@@ -49,6 +53,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("address"), contactData.getAddress());
         type(By.name("home"), contactData.getHomePhone());
         type(By.name("email"), contactData.getFirstEmail());
+        attach(By.name("photo"), contactData.getPhoto());
         if (creation) {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
         } else {
