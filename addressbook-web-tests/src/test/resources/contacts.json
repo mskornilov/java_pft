@@ -1,0 +1,37 @@
+[
+  {
+    "firstname": "Samuel",
+    "lastname": "Bryant",
+    "address": "Baker street, 1b",
+    "homePhone": "+7 555 423 84 00",
+    "firstEmail": "Sa.Bryant@lndn.uk"
+  },
+  {
+    "firstname": "Thomas",
+    "lastname": "Hill",
+    "address": "Baker street, 2b",
+    "homePhone": "+7 555 423 84 01",
+    "firstEmail": "Th.Hill@lndn.uk"
+  },
+  {
+    "firstname": "Douglas",
+    "lastname": "Cooper",
+    "address": "Baker street, 3b",
+    "homePhone": "+7 555 423 84 02",
+    "firstEmail": "Do.Cooper@lndn.uk"
+  },
+  {
+    "firstname": "Valentin",
+    "lastname": "Hill",
+    "address": "Baker street, 4b",
+    "homePhone": "+7 555 423 84 03",
+    "firstEmail": "Va.Hill@lndn.uk"
+  },
+  {
+    "firstname": "Samuel",
+    "lastname": "Cooper",
+    "address": "Baker street, 5b",
+    "homePhone": "+7 555 423 84 04",
+    "firstEmail": "Sa.Cooper@lndn.uk"
+  }
+]

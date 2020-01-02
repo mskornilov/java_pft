@@ -1,0 +1,22 @@
+<list>
+  <group>
+    <firstname>Erik</firstname>
+    <lastname>Ross</lastname>
+  </group>
+  <group>
+    <firstname>Brian</firstname>
+    <lastname>Griffin</lastname>
+  </group>
+  <group>
+    <firstname>Floyd</firstname>
+    <lastname>Simmons</lastname>
+  </group>
+  <group>
+    <firstname>Douglas</firstname>
+    <lastname>Miller</lastname>
+  </group>
+  <group>
+    <firstname>Floyd</firstname>
+    <lastname>Hill</lastname>
+  </group>
+</list>
