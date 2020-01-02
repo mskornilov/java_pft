@@ -2,7 +2,9 @@ git .gradle
 build/
 sandbox/build/
 .gradle/
+.idea
 .idea/workspace.xml
+*.log
 
 # Ignore Gradle GUI config
 gradle-app.setting
