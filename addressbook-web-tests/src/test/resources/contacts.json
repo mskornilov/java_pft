@@ -1,37 +1,42 @@
 [
   {
-    "firstname": "Samuel",
-    "lastname": "Bryant",
+    "firstname": "Douglas",
+    "lastname": "Perry",
     "address": "Baker street, 1b",
     "homePhone": "+7 555 423 84 00",
-    "firstEmail": "Sa.Bryant@lndn.uk"
+    "firstEmail": "Do.Perry@lndn.uk",
+    "group": "test1"
   },
   {
-    "firstname": "Thomas",
-    "lastname": "Hill",
+    "firstname": "Todd",
+    "lastname": "Griffin",
     "address": "Baker street, 2b",
     "homePhone": "+7 555 423 84 01",
-    "firstEmail": "Th.Hill@lndn.uk"
+    "firstEmail": "To.Griffin@lndn.uk",
+    "group": "test1"
   },
   {
     "firstname": "Douglas",
-    "lastname": "Cooper",
+    "lastname": "Miller",
     "address": "Baker street, 3b",
     "homePhone": "+7 555 423 84 02",
-    "firstEmail": "Do.Cooper@lndn.uk"
+    "firstEmail": "Do.Miller@lndn.uk",
+    "group": "test1"
   },
   {
-    "firstname": "Valentin",
-    "lastname": "Hill",
+    "firstname": "Jake",
+    "lastname": "Mitchell",
     "address": "Baker street, 4b",
     "homePhone": "+7 555 423 84 03",
-    "firstEmail": "Va.Hill@lndn.uk"
+    "firstEmail": "Ja.Mitchell@lndn.uk",
+    "group": "test1"
   },
   {
-    "firstname": "Samuel",
-    "lastname": "Cooper",
+    "firstname": "John",
+    "lastname": "Smith",
     "address": "Baker street, 5b",
     "homePhone": "+7 555 423 84 04",
-    "firstEmail": "Sa.Cooper@lndn.uk"
+    "firstEmail": "Jo.Smith@lndn.uk",
+    "group": "test1"
   }
 ]

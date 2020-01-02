@@ -90,6 +90,13 @@ public class ContactHelper extends HelperBase {
     }
 
 
+    public void createContact(ContactData contact) {
+        initContactCreation();
+        fillNewContactForm(contact, true);
+        submitContactCreation();
+        returnToHomePage();
+    }
+
     public void createContact() {
         initContactCreation();
         fillNewContactForm(contactData, true);
