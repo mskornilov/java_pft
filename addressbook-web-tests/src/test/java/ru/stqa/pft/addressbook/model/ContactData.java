@@ -19,53 +19,41 @@ public class ContactData {
     private int id = Integer.MAX_VALUE;
     @Expose
     @Column(name = "firstname")
-    private String firstname;
+    private String firstname = "";
     @Expose
     @Column(name = "lastname")
-    private String lastname;
+    private String lastname = "";
     @Expose
     @Column(name = "address")
     @Type(type = "text")
-    private String address;
+    private String address = "";
     @Expose
     @Column(name = "home")
     @Type(type = "text")
-    private String homePhone;
+    private String homePhone = "";
     @Column(name = "mobile")
     @Type(type = "text")
-    private String mobilePhone;
+    private String mobilePhone = "";
     @Column(name = "work")
     @Type(type = "text")
-    private String workPhone;
+    private String workPhone = "";
     @Transient
     private String allPhones;
     @Expose
     @Column(name = "email")
     @Type(type = "text")
-    private String firstEmail;
+    private String firstEmail = "";
     @Column(name = "email2")
     @Type(type = "text")
-    private String secondEmail;
+    private String secondEmail = "";
     @Column(name = "email3")
     @Type(type = "text")
-    private String thirdEmail;
+    private String thirdEmail = "";
     @Transient
     private String allEmails;
     @Expose
     @Transient
     private String group;
-    @Column(name = "photo")
-    @Type(type = "text")
-    private String photo;
-
-    @Override
-    public String toString() {
-        return "ContactData{" +
-                "id=" + id +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -76,7 +64,14 @@ public class ContactData {
 
         if (id != that.id) return false;
         if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-        return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
+        if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
+        if (address != null ? !address.equals(that.address) : that.address != null) return false;
+        if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
+        if (mobilePhone != null ? !mobilePhone.equals(that.mobilePhone) : that.mobilePhone != null) return false;
+        if (workPhone != null ? !workPhone.equals(that.workPhone) : that.workPhone != null) return false;
+        if (firstEmail != null ? !firstEmail.equals(that.firstEmail) : that.firstEmail != null) return false;
+        if (secondEmail != null ? !secondEmail.equals(that.secondEmail) : that.secondEmail != null) return false;
+        return thirdEmail != null ? thirdEmail.equals(that.thirdEmail) : that.thirdEmail == null;
     }
 
     @Override
@@ -84,8 +79,19 @@ public class ContactData {
         int result = id;
         result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
+        result = 31 * result + (mobilePhone != null ? mobilePhone.hashCode() : 0);
+        result = 31 * result + (workPhone != null ? workPhone.hashCode() : 0);
+        result = 31 * result + (firstEmail != null ? firstEmail.hashCode() : 0);
+        result = 31 * result + (secondEmail != null ? secondEmail.hashCode() : 0);
+        result = 31 * result + (thirdEmail != null ? thirdEmail.hashCode() : 0);
         return result;
     }
+
+    @Column(name = "photo")
+    @Type(type = "text")
+    private String photo;
 
     public String getFirstname() {
         return firstname;
@@ -136,8 +142,24 @@ public class ContactData {
         return group;
     }
 
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", address='" + address + '\'' +
+                ", homePhone='" + homePhone + '\'' +
+                ", mobilePhone='" + mobilePhone + '\'' +
+                ", workPhone='" + workPhone + '\'' +
+                ", firstEmail='" + firstEmail + '\'' +
+                ", secondEmail='" + secondEmail + '\'' +
+                ", thirdEmail='" + thirdEmail + '\'' +
+                '}';
+    }
+
     public File getPhoto() {
-        return new File(photo);
+        return photo == null ? null : new File(photo);
     }
 
     public int getId() {
