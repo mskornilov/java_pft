@@ -95,7 +95,7 @@ public class ContactDataGenerator {
               .withAddress(String.format("Baker street, %db", i + 1))
               .withFirstEmail(String.format("%s.%s@lndn.uk", firstNames[firstNameIndex].substring(0,2), lastNames[lastNameIndex]))
               .withHomePhone(String.format("+7 555 423 84 %s", i > 9 ? i : "0" + i))
-              .withGroup("test1")
+//              .withGroup("test1")
       );
     }
     return contacts;

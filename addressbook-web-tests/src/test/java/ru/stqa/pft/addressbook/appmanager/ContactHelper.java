@@ -21,7 +21,7 @@ public class ContactHelper extends HelperBase {
             .withAddress("Baker street, 221b")
             .withHomePhone("+7 555 423 84 88")
             .withFirstEmail("Sherlock.Holmes@lndn.uk")
-            .withGroup("test1")
+//            .withGroup("test1")
             .withPhoto(photo);
 
     public ContactHelper(WebDriver wd) {
@@ -55,7 +55,10 @@ public class ContactHelper extends HelperBase {
         type(By.name("email"), contactData.getFirstEmail());
         attach(By.name("photo"), contactData.getPhoto());
         if (creation) {
-            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+            if (contactData.getGroups().size() > 0) {
+                Assert.assertTrue(contactData.getGroups().size() == 1);
+                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+            }
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
