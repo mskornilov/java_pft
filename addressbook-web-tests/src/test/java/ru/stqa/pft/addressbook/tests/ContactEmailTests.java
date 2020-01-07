@@ -13,7 +13,7 @@ public class ContactEmailTests extends TestBase {
 
     @Test
     public void testContactEmail() {
-        app.goTo().gotoHomePage();
+        app.goTo().homePage();
         ContactData contact = app.contact().all().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 

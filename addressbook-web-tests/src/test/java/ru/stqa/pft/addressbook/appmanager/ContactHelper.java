@@ -178,4 +178,24 @@ public class ContactHelper extends HelperBase {
         address = address.replaceAll("\\s+(?=\n)|\n$", "");
         return address;
     }
+
+    public void addToGroupById(int id) {
+        new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(id));
+        click(By.name("add"));
+        gotoHomePage();
+    }
+
+    public void filterContactsByGroupId(int id) {
+        new Select(wd.findElement(By.name("group"))).selectByValue(String.valueOf(id));
+    }
+
+    public void removeFilterByGroupId() {
+        new Select(wd.findElement(By.name("group"))).selectByVisibleText("[all]");
+    }
+
+    public void removeContactFromGroup(){
+        click(By.name("remove"));
+        gotoHomePage();
+        removeFilterByGroupId();
+    }
 }

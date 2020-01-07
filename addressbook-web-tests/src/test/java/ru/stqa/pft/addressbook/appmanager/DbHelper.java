@@ -40,12 +40,53 @@ public class DbHelper {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         List<ContactData> result = session.createQuery( "from ContactData where deprecated = '0000-00-00' " ).list();
-        for ( ContactData contact : result ) {
-            System.out.println(contact);
-        }
         session.getTransaction().commit();
         session.close();
         return new Contacts(result);
+    }
+
+    public ContactData selectContactById(int id) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        ContactData result = (ContactData) session.createQuery(
+                String.format("from ContactData where id = '%s' and deprecated = '0000-00-00'", id)).getSingleResult();
+        session.getTransaction().commit();
+        session.close();
+        return result;
+    }
+
+    public ContactData selectContactWithMaxId() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        ContactData result = (ContactData) session.createQuery(
+                "from ContactData where deprecated = '0000-00-00' order by id desc")
+                .setMaxResults(1)
+                .getSingleResult();
+        session.getTransaction().commit();
+        session.close();
+        return result;
+    }
+
+    public GroupData selectGroupWithMaxId() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        GroupData result = (GroupData) session.createQuery(
+                "from GroupData where deprecated = '0000-00-00' order by id desc")
+                .setMaxResults(1)
+                .getSingleResult();
+        session.getTransaction().commit();
+        session.close();
+        return result;
+    }
+
+    public GroupData selectGroupById(int id) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        GroupData result = (GroupData) session.createQuery(
+                String.format("from GroupData where id = '%s'", id)).getSingleResult();
+        session.getTransaction().commit();
+        session.close();
+        return result;
     }
 
 }
