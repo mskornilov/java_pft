@@ -45,11 +45,18 @@ public class ApplicationManager {
     }
 
     public void stop() {
-        logout();
         wd.quit();
     }
 
     private void logout() {
         wd.findElement(By.linkText("Logout")).click();
+    }
+
+    public HttpSession newSession() {
+        return new HttpSession(this);
+    }
+
+    public String getProperty(String key) {
+        return properties.getProperty(key);
     }
 }
