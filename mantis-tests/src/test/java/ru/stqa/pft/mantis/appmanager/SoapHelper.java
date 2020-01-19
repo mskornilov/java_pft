@@ -13,10 +13,12 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class SoapHelper extends HelperBase{
+public class SoapHelper {
+
+    private ApplicationManager app;
 
     public SoapHelper(ApplicationManager app) {
-        super(app);
+        this.app = app;
     }
 
     public Set<Project> getProjects() throws MalformedURLException, ServiceException, RemoteException {
@@ -49,5 +51,19 @@ public class SoapHelper extends HelperBase{
                 .withProject( new Project()
                                 .withId(createdIssueData.getProject().getId().intValue())
                                 .withName(createdIssueData.getProject().getName()));
+    }
+
+    public Issue getIssueById(int id) throws MalformedURLException, ServiceException, RemoteException {
+        MantisConnectPortType mc = getMantisConnect();
+        IssueData issueData = mc.mc_issue_get(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword"), BigInteger.valueOf(id));
+        return new Issue()
+                .withId(issueData.getId().intValue())
+                .withStatus(issueData.getStatus().getName())
+                .withSummary(issueData.getSummary())
+                .withDescription(issueData.getDescription())
+                .withProject( new Project()
+                        .withId(issueData.getProject().getId().intValue())
+                        .withName(issueData.getProject().getName()));
+
     }
 }
