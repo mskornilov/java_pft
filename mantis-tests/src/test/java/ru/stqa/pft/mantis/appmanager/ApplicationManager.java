@@ -1,6 +1,5 @@
 package ru.stqa.pft.mantis.appmanager;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -22,6 +21,10 @@ public class ApplicationManager {
     private FtpHelper ftp;
     private MailHelper mailHelper;
     private JamesHelper jamesHelper;
+    private DbHelper dbHelper;
+    private NavigationHelper navigationHelper;
+    private PasswordChangeHelper passwordChange;
+
 
     public ApplicationManager(String browser){
         this.browser = browser;
@@ -41,10 +44,6 @@ public class ApplicationManager {
         if (wd != null) {
             wd.quit();
         }
-    }
-
-    private void logout() {
-        wd.findElement(By.linkText("Logout")).click();
     }
 
     public HttpSession newSession() {
@@ -81,6 +80,27 @@ public class ApplicationManager {
             jamesHelper = new JamesHelper(this);
         }
         return jamesHelper;
+    }
+
+    public DbHelper db() {
+        if (dbHelper == null) {
+            dbHelper = new DbHelper(this);
+        }
+        return dbHelper;
+    }
+
+    public NavigationHelper goTo() {
+        if (navigationHelper == null) {
+            navigationHelper = new NavigationHelper(this);
+        }
+        return navigationHelper;
+    }
+
+    public PasswordChangeHelper passwordChange() {
+        if (passwordChange == null) {
+            passwordChange = new PasswordChangeHelper(this);
+        }
+        return passwordChange;
     }
 
     public WebDriver getDriver() {
