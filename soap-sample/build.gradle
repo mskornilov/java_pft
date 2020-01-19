@@ -1,0 +1,39 @@
+apply plugin: 'java'
+
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    testCompile 'org.testng:testng:6.10'
+}
+
+test {
+    useTestNG()
+}
+
+
+buildscript{
+    repositories{
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'no.nils:wsdl2java:0.10'
+    }
+}
+
+apply plugin: 'no.nils.wsdl2java'
+
+wsdl2java {
+    generatedWsdlDir = file("src/main/java")
+    wsdlDir = file("$projectDir/src/main/resources") // define to support incremental build
+    wsdlsToGenerate = [   //  2d-array of wsdls and cxf-parameters
+                          ['-p', 'net.webservicex', '-autoNameResolution', "$projectDir/src/main/resources/geoipservice.wsdl"]
+//                          ['-xjc','-b','bindingfile.xml','src/main/resources/wsdl/secondwsdl.wsdl']
+    ]
+//    locale = Locale.GERMANY
+//    cxfVersion = "2.5.1"
+}

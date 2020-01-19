@@ -24,6 +24,7 @@ public class ApplicationManager {
     private DbHelper dbHelper;
     private NavigationHelper navigationHelper;
     private PasswordChangeHelper passwordChange;
+    private SoapHelper soapHelper;
 
 
     public ApplicationManager(String browser){
@@ -101,6 +102,13 @@ public class ApplicationManager {
             passwordChange = new PasswordChangeHelper(this);
         }
         return passwordChange;
+    }
+
+    public SoapHelper soap() {
+        if (soapHelper == null) {
+            soapHelper = new SoapHelper(this);
+        }
+        return soapHelper;
     }
 
     public WebDriver getDriver() {
