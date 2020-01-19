@@ -1,10 +1,25 @@
-package ru.stqa.pft.rest;
+package ru.stqa.pft.rest.model;
+
+import com.google.gson.annotations.SerializedName;
 
 public class Issue {
 
     private int id;
     private String subject;
     private String description;
+    @SerializedName("state_name")
+    private String status;
+
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Issue withStatus(String status) {
+        this.status = status;
+        return this;
+    }
+
 
     public int getId() {
         return id;
