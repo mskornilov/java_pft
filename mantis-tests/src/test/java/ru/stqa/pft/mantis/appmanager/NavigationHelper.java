@@ -10,7 +10,7 @@ public class NavigationHelper extends HelperBase {
 
     public void logout() {
         click(By.cssSelector("span[class='user-info']"));
-        click(By.cssSelector("a[href='/mantisbt-2.23.0/logout_page.php']"));
+        click(By.cssSelector("a[href='/" + app.getProperty("mantis.folder") + "/logout_page.php']"));
     }
 
     public void login(String login, String password) {

@@ -17,11 +17,11 @@ public class PasswordChangeHelper extends HelperBase {
     }
 
     public void openManageTab() {
-        click(By.cssSelector("a[href='/mantisbt-2.23.0/manage_overview_page.php']"));
+        click(By.cssSelector("a[href='/" + app.getProperty("mantis.folder") + "/manage_overview_page.php']"));
     }
 
     public void openManageUsersPage() {
-        click(By.cssSelector("a[href='/mantisbt-2.23.0/manage_user_page.php']"));
+        click(By.cssSelector("a[href='/" + app.getProperty("mantis.folder") + "/manage_user_page.php']"));
     }
 
     public void chooseUserById(int id) {
